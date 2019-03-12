@@ -12,6 +12,8 @@ import java.util.UUID;
 @NoRepositoryBean
 public interface BaseRepository<T extends BaseModel> extends JpaRepository<T, UUID> {
     List<T> findAllByDeleted(Boolean deleted);
+//    List<T> saveAll(Iterable<T> list);
     T findByName(String name);
     List<T> findByNameContainingIgnoreCase(String keyword);
+
 }

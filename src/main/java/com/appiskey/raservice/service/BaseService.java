@@ -15,6 +15,7 @@ import java.util.UUID;
 //@NoRepositoryBean
 public interface BaseService<T extends BaseModel> {
     public T insert(T item);
+    public List<T> saveAll(Iterable<T> list);
     public List<T> findAll();
     public List<T> searchByName(String keyword);
     public List<T> getAll();

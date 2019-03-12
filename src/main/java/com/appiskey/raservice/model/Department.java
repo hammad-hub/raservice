@@ -3,6 +3,8 @@ package com.appiskey.raservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,6 +29,8 @@ public class Department extends BaseModel{
 
     @ManyToOne
     @JoinColumn(name="resource_id")
+    @NotFound(action= NotFoundAction.IGNORE)
+    @JsonIgnore
     private Resource departmentHod;
 
 }

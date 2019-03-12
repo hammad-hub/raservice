@@ -3,6 +3,8 @@ package com.appiskey.raservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -49,8 +51,11 @@ public class Resource extends BaseModel{
                     referencedColumnName = "id"))
     private List<Skill> resourceSkills;
 
-    @ManyToOne
-    private Project resourceProject;
+
+
+    @OneToMany(mappedBy = "project")
+    private List<ResourceProject> resourceProject;
+
 
 
     private boolean resourcePartTime;
@@ -58,10 +63,12 @@ public class Resource extends BaseModel{
 
     @ManyToOne
     @JoinColumn(name="department_id")
+    @NotFound(action= NotFoundAction.IGNORE)
     private Department resourceDepartment;
 
 
     @ManyToOne
     @JoinColumn(name = "reporting_id")
+    @NotFound(action= NotFoundAction.IGNORE)
     protected Resource resourceReportingTo;
 }
