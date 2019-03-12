@@ -31,7 +31,6 @@ public class Resource extends BaseModel{
     private String resourceNationality;
     private String resourceEmergencyContactNo;
     private String resourceMaritalStatus;
-    private String resourceDesignation;
     private String resourceResume;
     private Date resourceDateOfJoining;
     private int resourceWorkingDays;
@@ -39,8 +38,14 @@ public class Resource extends BaseModel{
     private BigDecimal resourceSalaryPerMonth;
     private BigDecimal resourcePerHourRate;
     private String resourceShift;
-    private BigDecimal resourceBenefits;
-    private int resourceContractType;     //isIntern, isPartTime , isFullTime
+    private String resourceBenefits;
+    private String resourceContractType;     //isIntern, isPartTime , isFullTime
+
+
+
+    @ManyToOne
+    @JoinColumn(name="designation_id")
+    private Designation resourceDesignation;
 
 
 
@@ -64,6 +69,7 @@ public class Resource extends BaseModel{
     @ManyToOne
     @JoinColumn(name="department_id")
     @NotFound(action= NotFoundAction.IGNORE)
+    @JsonIgnore
     private Department resourceDepartment;
 
 
