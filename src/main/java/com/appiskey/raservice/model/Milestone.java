@@ -1,7 +1,10 @@
 package com.appiskey.raservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,20 +23,24 @@ public class Milestone extends BaseModel {
 //    private String milestoneName;
     private Date milestoneStartDate;
     private Date milestoneDelieveryDate;
-    private Date milestoneDevelopmentDate;
     private BigDecimal milestoneExpectedPayment;
-    private BigDecimal milestonePaymentAmount;
+    private int milestoneNoOfDays;
     private BigDecimal milestoneCost;
-    private String milestonePaymentMethod;
+
 
 
 //    @ManyToOne
 //    private Client client;
 
+//
+//    @ManyToOne
+//    @JoinColumn(name = "project_id", referencedColumnName = "id")
 
-    @ManyToOne
-    @JoinColumn(name = "project_id", referencedColumnName = "id")
-    private Project project;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "project_id", nullable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    private Project project;
 
 
  }
