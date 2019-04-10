@@ -21,11 +21,10 @@ import java.util.UUID;
 @Table
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 //@IdClass(ResourceProjectId.class)
 public class ResourceProject extends BaseModel implements Serializable{
-
+//
 //    @Id
 //    @ManyToOne
 //    @JoinColumn
@@ -41,7 +40,7 @@ public class ResourceProject extends BaseModel implements Serializable{
 //
 
 
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "resourceId", referencedColumnName = "id")
 //    @JoinTable(name = "project_association",
 //            joinColumns = @JoinColumn(name = "resourceId", referencedColumnName = "id"),
@@ -49,7 +48,7 @@ public class ResourceProject extends BaseModel implements Serializable{
 //                    referencedColumnName = "id"))
     private Resource resource ;
 
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch= FetchType.LAZY, cascade =  CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "projectId", referencedColumnName = "id")
     private Project project;
 

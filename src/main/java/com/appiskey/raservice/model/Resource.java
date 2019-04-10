@@ -55,9 +55,10 @@ public class Resource extends BaseModel{
                     referencedColumnName = "id"))
     private List<Skill> resourceSkills;
 
-
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "project_id")
     private List<Project> projects;
+
 
 //    @ManyToOne
 //    @JoinColumn(name="resourceId")

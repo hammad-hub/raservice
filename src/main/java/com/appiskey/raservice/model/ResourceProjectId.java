@@ -14,7 +14,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Data
 @NoArgsConstructor
-
+@Embeddable
 public class ResourceProjectId implements Serializable{
 
     @Column(name = "resource_id")
