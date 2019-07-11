@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ProjectRepository extends BaseRepository<Project>{
 
-    @Query("SELECT COUNT(*) as totalProjectCount FROM Project")
+    @Query(nativeQuery = true , value="SELECT count(*) as totalProjectCount FROM project where  (CURRENT_DATE BETWEEN project_start_date AND project_development_date) OR (project_start_date = CURRENT_DATE) OR (project_development_date = CURRENT_DATE)")
     ProjectCount findCountDistinct();
 
     @Query(nativeQuery = true, value="Select DISTINCT(p.name) as name from project p Join project_project_milestones m ON p.id = m.project_id JOIN (Select * from milestone where milestone_delievery_date < CURRENT_DATE) t ON m.project_milestones_id = t.id")
